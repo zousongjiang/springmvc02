@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+   
+   <!-- 开启springmvc注解支持 -->
+   	<mvc:annotation-driven/>
+   	
+   	<!-- 定义静态资源包，定义之后，请求将不会达到HandleMapping,而是直接从该资源包中
+   	提取资源文件 -->
+   	<mvc:resources location="/static/" mapping="/static/**"></mvc:resources>
+   	
+    <context:component-scan base-package="org.framestudy.springmvc02.sysmag">
+    	<!-- 容器提供的过滤器类型还有：assignable(类名)，regex(正则)，aspectj(切面) -->
+    	<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    	<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+    	<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+    </context:component-scan>
+    
+    
+    
+    
+    
+    
+    
+	<!-- springmvc 3.2之后的版本，默认采用DefaultAnnotationHandlerMapping来作为处理映射器
+	它作为处理映射器的时候，不再需要在配置文件声明映射关系，而是采用注解在JAVA类中来声明映射
+	关系 -->
+	
+    <!-- 配置一个试图解析器ViewResolver(应用控制器) --> 
+    <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    	<!-- 如果你的页面使用到了JSTL技术，需要指定JstlView类来专门解析 -->
+    	<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
+    	<property name="prefix" value="/"></property>
+    	<property name="suffix" value=".jsp"></property>
+    </bean>    
+    
+</beans>
