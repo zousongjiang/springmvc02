@@ -10,8 +10,9 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
    
-   <!-- 开启springmvc注解支持 -->
-   	<mvc:annotation-driven conversion-service="tc"/>
+   	<!-- 开启springmvc注解支持 -->
+   	<mvc:annotation-driven conversion-service="tc" validator="validator"/>
+   	
    	
    	<!-- 定义静态资源包，定义之后，请求将不会达到HandleMapping,而是直接从该资源包中
    	提取资源文件 -->
@@ -34,10 +35,10 @@
     	</property>
     </bean>
     
-    
-	<!-- springmvc 3.2之后的版本，默认采用DefaultAnnotationHandlerMapping来作为处理映射器
-	它作为处理映射器的时候，不再需要在配置文件声明映射关系，而是采用注解在JAVA类中来声明映射
-	关系 -->
+    <!-- 向Spring容器注册验证框架 -->
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+    	<property name="providerClass" value="org.hibernate.validator.HibernateValidator"></property>
+    </bean>
 	
     <!-- 配置一个试图解析器ViewResolver(应用控制器) --> 
     <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

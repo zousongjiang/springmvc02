@@ -2,18 +2,42 @@ package org.framestudy.springmvc02.sysmag.beans;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.validation.constraints.AssertTrue;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class Register {
 
+	@NotEmpty(message="用户名不能为空！")
+	@Size(min=6,max=12,message="用户名长度必须在6-12位之间！")
 	private String userName;
+	
+	@Min(value=18,message="未满18岁，请自动离开！")
+	@Max(value=60,message="本站属于刺激性网站，为了您的健康，请自动离开！")
 	private int age;
+	
+	@Past(message="你不能穿越回来！")
+	private Date birthday;
+	
+	@AssertTrue(message="单身狗，请离开！")
 	private boolean marry;
+	
+	@Digits(integer=6,fraction=2,message="工资收入必须控制在100万之内！")
 	private double income;
+	
+	
 	private String[] hobby;
 	//List作为参数属性时，需要与对象进行绑定
 	private List<Address> adds = new ArrayList<Address>();
@@ -87,10 +111,17 @@ public class Register {
 	public void setRole(Role role) {
 		this.role = role;
 	}
+	
+	public Date getBirthday() {
+		return birthday;
+	}
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
 	@Override
 	public String toString() {
-		return "Register [userName=" + userName + ", age=" + age + ", marry=" + marry + ", income=" + income
-				+ ", hobby=" + Arrays.toString(hobby) + ", adds=" + adds + ", wifes=" + wifes + ", maps=" + maps
-				+ ", role=" + role + "]";
+		return "Register [userName=" + userName + ", age=" + age + ", birthday=" + birthday + ", marry=" + marry
+				+ ", income=" + income + ", hobby=" + Arrays.toString(hobby) + ", adds=" + adds + ", wifes=" + wifes
+				+ ", maps=" + maps + ", role=" + role + "]";
 	}
 }

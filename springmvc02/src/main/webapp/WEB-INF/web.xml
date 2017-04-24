@@ -5,25 +5,14 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	<!-- 启动Spring大容器，将Spring容器内的内容纳入到WEB容器中 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:spring-servlet.xml</param-value>
+	</context-param>	
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
 	
 	<!-- Spring 提供的关于处理POST请求中文乱码的过滤器-->
 	<filter>
