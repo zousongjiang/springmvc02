@@ -27,6 +27,7 @@
 		<br/>
 		密码：<input type="password" name="pwd"/>
 		<br/>
+		出生日期：<input type="text" name="birthday"/>
 		<input type="submit" value="提交"/>
 	</form>
 	

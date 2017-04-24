@@ -11,7 +11,7 @@
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
    
    <!-- 开启springmvc注解支持 -->
-   	<mvc:annotation-driven/>
+   	<mvc:annotation-driven conversion-service="tc"/>
    	
    	<!-- 定义静态资源包，定义之后，请求将不会达到HandleMapping,而是直接从该资源包中
    	提取资源文件 -->
@@ -25,9 +25,14 @@
     </context:component-scan>
     
     
-    
-    
-    
+    <!-- 向Spring容器注册全局转换器 -->
+    <bean id="tc" class="org.springframework.context.support.ConversionServiceFactoryBean">
+    	<property name="converters">
+    		<set>
+    			<bean class="org.framestudy.springmvc02.sysmag.converter.GlobalDateConverter"></bean>
+    		</set>
+    	</property>
+    </bean>
     
     
 	<!-- springmvc 3.2之后的版本，默认采用DefaultAnnotationHandlerMapping来作为处理映射器

@@ -23,6 +23,10 @@
 				<td><input type="text" name="age"/></td>
 			</tr>
 			<tr>
+				<td>出生日期：</td>
+				<td colspan="3"><input type="text" name="birthday"/></td>
+			</tr>
+			<tr>
 				<td>是否婚配：</td>
 				<td><input type="radio" name="marry" checked="checked" value="true"/>是
 				<input type="radio" name="marry" value="false"/>否</td>
