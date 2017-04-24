@@ -5,6 +5,9 @@ public class UserBean {
 	private String userName;
 	
 	private String pwd;
+	
+	
+	
 
 	public UserBean() {
 		super();

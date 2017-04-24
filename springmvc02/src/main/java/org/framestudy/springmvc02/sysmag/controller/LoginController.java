@@ -1,13 +1,10 @@
 package org.framestudy.springmvc02.sysmag.controller;
 
-import java.io.PrintWriter;
-
-import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.framestudy.springmvc02.sysmag.beans.UserBean;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,6 +18,63 @@ public class LoginController {
 	
 	
 	
+	
+	/**
+	 * Map作为返回类型的时候，
+	 * 是将请求路径来作为即将跳转的页面路径
+	 * 并且向其中进行设值等同于向Request中进行设值
+	 * @param user
+	 * @return
+	 */
+	@RequestMapping(value="/login")
+	public Map loginForward(UserBean user){
+		
+		System.out.println(user);
+		Map map = new HashMap();
+		map.put("user", user);
+		return map;
+		
+	}
+	
+	
+	
+/*	@RequestMapping(value="/login")
+	public String loginForward(UserBean user){
+		
+		
+		
+		System.out.println(user);
+		
+		
+//		return "forward:/errors/loginError";
+//		return "redirect:/errors/loginError";
+		//重定向:forward修改成redirect
+		
+		//如果要重定向到其他服务器，也是可以的：
+		//例如：
+		return "redirect:http://www.baidu.com";
+		
+	}*/
+	
+	
+	
+	
+	
+	/**
+	 * String作为返回类型时，返回的数据就是逻辑视图的名称
+	 * @param user
+	 * @param map
+	 * @return
+	 */
+	/*@RequestMapping(value="/login")
+	public String login(UserBean user,Map map){
+		
+		System.out.println(user);
+		
+		map.put("user", user);
+		
+		return "/layout/main";
+	}*/
 	
 	
 	
@@ -117,7 +171,7 @@ public class LoginController {
 	 */
 	//HTTP Status 405 - Request method 'POST' not supported
 	//HTTP Status 400 - Parameter conditions "userName" not met for actual request parameters: pwd={}
-	@RequestMapping(value={"/login"},method=RequestMethod.GET,params={"userName"})
+	/*@RequestMapping(value={"/login"},method=RequestMethod.GET,params={"userName"})
 	public ModelAndView login(UserBean user){
 		
 		System.out.println(user);
@@ -125,7 +179,7 @@ public class LoginController {
 		ModelAndView mv = new ModelAndView("/layout/main");
 		mv.addObject("user", user);
 		return mv;
-	}
+	}*/
 	
 	/**
 	 * 能作为参数的第二种：表单提交项
