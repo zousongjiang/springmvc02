@@ -14,17 +14,13 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	
-	<!-- Spring 提供的关于处理POST请求中文乱码的过滤器-->
+	<!-- 关于处理HTTP请求中文乱码的过滤器-->
 	<filter>
 		<filter-name>characterEncodingFilter</filter-name>
-		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<filter-class>org.framestudy.springmvc02.sysmag.filter.EncodingFilter</filter-class>
 		<init-param>
 			<param-name>encoding</param-name>
 			<param-value>UTF-8</param-value>
-		</init-param>
-		<init-param>
-			<param-name>forceEncoding</param-name>
-			<param-value>true</param-value>
 		</init-param>
 	</filter>
 	<filter-mapping>

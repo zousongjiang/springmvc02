@@ -3,11 +3,14 @@ package org.framestudy.springmvc02.sysmag.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.framestudy.springmvc02.sysmag.beans.UserBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.support.RequestContext;
 
 @RequestMapping(value="/sys")
 @Controller
@@ -26,7 +29,7 @@ public class LoginController {
 	 * @param user
 	 * @return
 	 */
-	@RequestMapping(value="/login")
+	/*@RequestMapping(value="/login")
 	public Map loginForward(UserBean user){
 		
 		System.out.println(user);
@@ -34,7 +37,7 @@ public class LoginController {
 		map.put("user", user);
 		return map;
 		
-	}
+	}*/
 	
 	
 	
@@ -66,15 +69,21 @@ public class LoginController {
 	 * @param map
 	 * @return
 	 */
-	/*@RequestMapping(value="/login")
-	public String login(UserBean user,Map map){
+	@RequestMapping(value="/login")
+	public String login(UserBean user,Map map,HttpServletRequest req){
 		
 		System.out.println(user);
 		
 		map.put("user", user);
 		
+		
+		//根据req对象获取请求作用域对象，并从作用域中得到国际化信息
+		RequestContext rc = new RequestContext(req);
+		System.out.println(rc.getMessage("login.page.loginSuccess"));
+		
+		
 		return "/layout/main";
-	}*/
+	}
 	
 	
 	

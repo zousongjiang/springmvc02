@@ -16,7 +16,7 @@
 
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>验证页面</title>
+<title><s:message code="validate.page"></s:message></title>
 
 <style type="text/css">
 font {
@@ -31,18 +31,19 @@ font {
 	<sf:form action="validates/rule" method="post" modelAttribute="errs">
 		<table>
 			<tr>
-				<td>用户名：</td>
+				<td><s:message code="validate.page.userName"></s:message></td>
 				<td><input type="text" name="userName" /><font><sf:errors
 							delimiter="," path="userName"></sf:errors></font></td>
-				<td>年龄：</td>
+				<td><s:message code="validate.page.age"></s:message></td>
 				<td><input type="text" name="age" /><font><sf:errors
 							delimiter="," path="age"></sf:errors></font></td>
 			</tr>
 			<tr>
-				<td>出生日期：</td>
+				<td><s:message code="validate.page.birthday"></s:message></td>
 				<td colspan="3"><input type="text" name="birthday" /><font><sf:errors
 							delimiter="," path="birthday"></sf:errors></font></td>
 			</tr>
+			
 			<tr>
 				<td>是否婚配：</td>
 				<td><input type="radio" name="marry" checked="checked"
