@@ -58,6 +58,8 @@
     	<property name="providerClass" value="org.hibernate.validator.HibernateValidator"></property>
     </bean>
 	
+	
+	<!-- 百度搜索：ISO 语言 国家 -->
 	<!-- 为Spring容器指定语言资源文件的位置，固定ID为：messageSource -->
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename" value="messager_zh_CN"></property>
