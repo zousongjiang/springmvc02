@@ -65,6 +65,7 @@
 		<property name="basename" value="messager_zh_CN"></property>
 	</bean>
 	
+	
 	<!-- 配置一个文件上传解析器,此ID是固定的，无法改变的 -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<!-- 单位是byte,例如：10M=10*1024*1024 当设值为：-1时表示不限制容量 -->
@@ -74,6 +75,12 @@
 		<!-- 每次读取文件时，最大的内存容量 -->
 		<property name="maxInMemorySize" value="1024"></property>
 	</bean>
+	
+	
+	
+	
+	
+	
 	
     <!-- 配置一个试图解析器ViewResolver(应用控制器) --> 
     <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

@@ -6,6 +6,12 @@
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 
+	<!-- 配置maven构建时，所需要采用的编码集 -->
+	<properties>  
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>  
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>  
+    </properties>
+    
 	<dependencies>
 
 		<!-- 对json和xml格式的支持类 -->
@@ -113,6 +119,18 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+			
+			<!-- 打包時，忽略单元测试结果 -->
+			<plugin>  
+  				<groupId>org.apache.maven.plugins</groupId>  
+  				<artifactId>maven-surefire-plugin</artifactId>  
+  				<version>2.17</version>  
+  				<configuration>
+  					<testFailureIgnore>true</testFailureIgnore>
+  				</configuration>
+			</plugin>
+			
+			
 		</plugins>
 	</build>
 </project>

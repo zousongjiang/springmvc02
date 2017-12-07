@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RequestMapping("/jsons")
-@RestController
+@RestController 
 public class JacksonController {
 
 	//如果直接返回"";需要修改application/json为text/html
